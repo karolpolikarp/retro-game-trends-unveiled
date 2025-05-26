@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 
@@ -33,6 +32,13 @@ const genreRadar = [
 ];
 
 const COLORS = ["#8b5cf6", "#06b6d4", "#10b981", "#f59e0b", "#ef4444", "#8366d9", "#06d6a0", "#ffd23f"];
+
+// Custom Bar component to handle conditional coloring
+const ConditionalBar = (props: any) => {
+  const { payload } = props;
+  const fillColor = payload && payload.growth > 0 ? "#10b981" : "#ef4444";
+  return <Bar {...props} fill={fillColor} />;
+};
 
 export const GenreDistribution = () => {
   return (
@@ -107,7 +113,7 @@ export const GenreDistribution = () => {
                 />
                 <Bar 
                   dataKey="growth" 
-                  fill={(data: any) => data.growth > 0 ? "#10b981" : "#ef4444"}
+                  fill="#8b5cf6"
                   radius={[4, 4, 4, 4]}
                 />
               </BarChart>

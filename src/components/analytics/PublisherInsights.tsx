@@ -1,6 +1,5 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, TreemapChart, ScatterChart, Scatter } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ScatterChart, Scatter } from "recharts";
 
 const topPublishers = [
   { name: "Electronic Arts", totalSales: 1110.32, games: 1351, avgScore: 8.2, marketShare: 12.4 },
