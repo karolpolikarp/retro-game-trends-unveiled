@@ -1,34 +1,68 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts";
-
-const salesData = [
-  { year: "1980", globalSales: 5.2, games: 12 },
-  { year: "1985", globalSales: 45.8, games: 89 },
-  { year: "1990", globalSales: 125.4, games: 234 },
-  { year: "1995", globalSales: 298.7, games: 567 },
-  { year: "2000", globalSales: 445.3, games: 1234 },
-  { year: "2005", globalSales: 678.9, games: 2156 },
-  { year: "2010", globalSales: 892.4, games: 3245 },
-  { year: "2015", globalSales: 1245.7, games: 4567 }
-];
-
-const topGames = [
-  { name: "Super Mario Bros.", sales: 40.24, platform: "NES", year: 1985 },
-  { name: "Mario Kart Wii", sales: 37.38, platform: "Wii", year: 2008 },
-  { name: "Wii Sports", sales: 82.90, platform: "Wii", year: 2006 },
-  { name: "Grand Theft Auto: San Andreas", sales: 17.33, platform: "PS2", year: 2004 },
-  { name: "Super Mario World", sales: 20.61, platform: "SNES", year: 1990 }
-];
+import { useEffect, useState } from "react";
+import { dataService, SalesData, TopGame } from "@/services/dataService";
 
 export const SalesOverview = () => {
+  const [salesData, setSalesData] = useState<SalesData[]>([]);
+  const [topGames, setTopGames] = useState<TopGame[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await dataService.fetchOverviewData();
+        setSalesData(data.salesData);
+        setTopGames(data.topGames);
+      } catch (err) {
+        console.error('Error fetching overview data:', err);
+        setError('Failed to load data. Make sure Python backend is running on port 8000.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="lg:col-span-2 bg-black/40 border-purple-800/30 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-center h-40">
+              <div className="text-white">Loading data...</div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="lg:col-span-2 bg-black/40 border-red-800/30 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <div className="flex items-center justify-center h-40">
+              <div className="text-red-400">{error}</div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Global Sales Trend */}
       <Card className="lg:col-span-2 bg-black/40 border-purple-800/30 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
-            Globalne Trendy Sprzedaży (1980-2015)
+            Globalne Trendy Sprzedaży (Dane Rzeczywiste)
           </CardTitle>
           <CardDescription className="text-gray-400">
             Ewolucja sprzedaży gier w milionach egzemplarzy
