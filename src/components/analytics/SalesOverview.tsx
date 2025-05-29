@@ -72,7 +72,7 @@ export const SalesOverview = () => {
         </Card>
       )}
 
-      {/* Global Sales Trend - FIXED */}
+      {/* Global Sales Trend */}
       <Card className="bg-black/40 border-green-800/30 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-white flex items-center">
@@ -129,7 +129,7 @@ export const SalesOverview = () => {
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Top Games - FIXED */}
+        {/* Top Games */}
         <Card className="bg-black/40 border-green-800/30 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-white">Top 5 Gier Wszech Czasów</CardTitle>
@@ -179,7 +179,7 @@ export const SalesOverview = () => {
           </CardContent>
         </Card>
 
-        {/* Regional Market Share with Year Selection - IMPROVED */}
+        {/* Regional Market Share with Year Selection */}
         <Card className="bg-black/40 border-green-800/30 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-white flex items-center justify-between">
@@ -232,7 +232,7 @@ export const SalesOverview = () => {
         </Card>
       </div>
 
-      {/* Genre Growth Analysis - FIXED */}
+      {/* Genre Growth Analysis */}
       <Card className="bg-black/40 border-green-800/30 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-white">Tempo Wzrostu Gatunków</CardTitle>
@@ -289,7 +289,7 @@ export const SalesOverview = () => {
         </CardContent>
       </Card>
 
-      {/* Market Insights - IMPROVED WITH DATA SCIENCE */}
+      {/* Market Insights - Data Science */}
       <Card className="bg-black/40 border-green-800/30 backdrop-blur-sm">
         <CardHeader>
           <CardTitle className="text-white">Kluczowe Insights - Analiza Data Science</CardTitle>
@@ -309,12 +309,12 @@ export const SalesOverview = () => {
             </div>
 
             <div className="p-6 bg-gradient-to-br from-green-900/40 to-green-800/40 rounded-xl border border-green-700/30">
-              <h3 className="text-white font-bold text-lg mb-3">🎯 Jakość > Ilość</h3>
+              <h3 className="text-white font-bold text-lg mb-3">🎯 Jakość vs Ilość</h3>
               <p className="text-gray-300 text-sm mb-4">
                 Współczynnik korelacji między liczbą gier a jakością: -0.73. Mniej gier = wyższa średnia ocena.
               </p>
               <div className="text-green-400 font-semibold">R² = 0.85</div>
-              <div className="text-gray-400 text-xs mt-2">p-value < 0.001</div>
+              <div className="text-gray-400 text-xs mt-2">p-value &lt; 0.001</div>
             </div>
 
             <div className="p-6 bg-gradient-to-br from-green-900/40 to-green-800/40 rounded-xl border border-green-700/30">
