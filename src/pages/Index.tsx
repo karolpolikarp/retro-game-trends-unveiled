@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +11,8 @@ import { GenreDistribution } from "@/components/analytics/GenreDistribution";
 import { PublisherInsights } from "@/components/analytics/PublisherInsights";
 import { MarketEvolution } from "@/components/analytics/MarketEvolution";
 import { MLDashboard } from "@/components/analytics/MLDashboard";
+import { GameMetrics } from "@/components/analytics/GameMetrics";
+import { PlatformAnalysis } from "@/components/analytics/PlatformAnalysis";
 
 const Index = () => {
   const [selectedMetric, setSelectedMetric] = useState("global");
@@ -20,25 +23,25 @@ const Index = () => {
       value: "8,923M",
       change: "+12.5%",
       icon: Globe,
-      color: "text-purple-500"
+      color: "text-green-500"
     },
     {
       title: "Aktywne Platformy",
       value: "31",
       change: "+5",
       icon: Gamepad2,
-      color: "text-blue-500"
+      color: "text-green-400"
     },
     {
       title: "Wydawcy",
       value: "579",
       change: "+23",
       icon: Users,
-      color: "text-cyan-500"
+      color: "text-green-600"
     },
     {
       title: "Średnia Cena",
-      value: "$39.99",
+      value: "$59.99",
       change: "+2.1%",
       icon: DollarSign,
       color: "text-green-500"
@@ -46,21 +49,21 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-purple-950 to-blue-950">
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-green-950 to-black">
       {/* Header */}
-      <div className="border-b border-purple-800/30 bg-black/20 backdrop-blur-sm">
+      <div className="border-b border-green-800/30 bg-black/20 backdrop-blur-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center">
                 <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">GameAnalytics Pro</h1>
-                <p className="text-gray-400 text-sm">Analiza rynku gier wideo 1980-2015 + AI/ML</p>
+                <p className="text-gray-400 text-sm">Kompleksowa analiza rynku gier wideo 1980-2015 + AI/ML</p>
               </div>
             </div>
-            <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700">
+            <Button className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
               Eksportuj Raport
             </Button>
           </div>
@@ -73,7 +76,7 @@ const Index = () => {
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
             return (
-              <Card key={index} className="bg-black/40 border-purple-800/30 backdrop-blur-sm hover:bg-black/50 transition-all duration-300 hover:scale-105">
+              <Card key={index} className="bg-black/40 border-green-800/30 backdrop-blur-sm hover:bg-black/50 transition-all duration-300 hover:scale-105">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium text-gray-300">
                     {metric.title}
@@ -94,26 +97,32 @@ const Index = () => {
 
         {/* Main Analytics Dashboard */}
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="bg-black/40 border-purple-800/30 backdrop-blur-sm">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+          <TabsList className="bg-black/40 border-green-800/30 backdrop-blur-sm">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Przegląd
             </TabsTrigger>
-            <TabsTrigger value="regional" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="regional" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Analiza Regionalna
             </TabsTrigger>
-            <TabsTrigger value="platforms" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="platforms" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Platformy
             </TabsTrigger>
-            <TabsTrigger value="genres" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="platform-analysis" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
+              Analiza Platform
+            </TabsTrigger>
+            <TabsTrigger value="genres" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Gatunki
             </TabsTrigger>
-            <TabsTrigger value="publishers" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="publishers" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Wydawcy
             </TabsTrigger>
-            <TabsTrigger value="evolution" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="metrics" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
+              Metryki Gier
+            </TabsTrigger>
+            <TabsTrigger value="evolution" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               Ewolucja Rynku
             </TabsTrigger>
-            <TabsTrigger value="ml" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+            <TabsTrigger value="ml" className="data-[state=active]:bg-green-600/20 data-[state=active]:text-green-300">
               AI & Machine Learning
             </TabsTrigger>
           </TabsList>
@@ -130,12 +139,20 @@ const Index = () => {
             <PlatformTrends />
           </TabsContent>
 
+          <TabsContent value="platform-analysis">
+            <PlatformAnalysis />
+          </TabsContent>
+
           <TabsContent value="genres">
             <GenreDistribution />
           </TabsContent>
 
           <TabsContent value="publishers">
             <PublisherInsights />
+          </TabsContent>
+
+          <TabsContent value="metrics">
+            <GameMetrics />
           </TabsContent>
 
           <TabsContent value="evolution">
