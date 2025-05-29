@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -10,6 +9,7 @@ import { PlatformTrends } from "@/components/analytics/PlatformTrends";
 import { GenreDistribution } from "@/components/analytics/GenreDistribution";
 import { PublisherInsights } from "@/components/analytics/PublisherInsights";
 import { MarketEvolution } from "@/components/analytics/MarketEvolution";
+import { MLDashboard } from "@/components/analytics/MLDashboard";
 
 const Index = () => {
   const [selectedMetric, setSelectedMetric] = useState("global");
