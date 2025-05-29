@@ -57,7 +57,7 @@ const Index = () => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-white">GameAnalytics Pro</h1>
-                <p className="text-gray-400 text-sm">Analiza rynku gier wideo 1980-2015</p>
+                <p className="text-gray-400 text-sm">Analiza rynku gier wideo 1980-2015 + AI/ML</p>
               </div>
             </div>
             <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700">
@@ -113,6 +113,9 @@ const Index = () => {
             <TabsTrigger value="evolution" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
               Ewolucja Rynku
             </TabsTrigger>
+            <TabsTrigger value="ml" className="data-[state=active]:bg-purple-600/20 data-[state=active]:text-purple-300">
+              AI & Machine Learning
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview">
@@ -137,6 +140,10 @@ const Index = () => {
 
           <TabsContent value="evolution">
             <MarketEvolution />
+          </TabsContent>
+
+          <TabsContent value="ml">
+            <MLDashboard />
           </TabsContent>
         </Tabs>
       </div>
